@@ -210,6 +210,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        L5Swagger\L5SwaggerServiceProvider::class,
     ])->toArray(),
 
 ];

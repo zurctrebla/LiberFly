@@ -1,0 +1,93 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "LiberFly",
+        "description": "LiberFly Api Documentation",
+        "contact": {
+            "email": "albertcruz@terra.com.br"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "http://my-default-host.com",
+            "description": "LiberFly API"
+        }
+    ],
+    "paths": {
+        "/flies": {
+            "get": {
+                "tags": [
+                    "Flies"
+                ],
+                "summary": "Get list of flies",
+                "description": "Returns list of flies",
+                "operationId": "geFliesList",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        },
+        "/flies/{uuid}": {
+            "get": {
+                "tags": [
+                    "Flies"
+                ],
+                "summary": "Get Fly information",
+                "description": "Returns Fly data",
+                "operationId": "getFlyByUuid",
+                "parameters": [
+                    {
+                        "name": "uuid",
+                        "in": "path",
+                        "description": "Fly uuid",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "properties": {
+                                        "identify": {
+                                            "type": "string"
+                                        },
+                                        "company": {
+                                            "type": "string"
+                                        },
+                                        "destination": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Bad Request"
+                    },
+                    "401": {
+                        "description": "Unauthenticated"
+                    },
+                    "403": {
+                        "description": "Forbidden"
+                    }
+                }
+            }
+        }
+    }
+}
