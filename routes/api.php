@@ -1,18 +1,16 @@
 <?php
 
+use App\Http\Controllers\Api\FlyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
+Route::apiResource('/flies', FlyController::class);
+
+
+// 1º teste de rota.
+Route::get('/', function () {
+    return response()->json(['message' => 'success']);
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
