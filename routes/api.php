@@ -10,6 +10,7 @@ Route::get('/', function () {
 });
 
 Route::middleware('api')->get('/flies', [FlyController::class, 'index']);
+Route::middleware('api')->get('/flies/{identify}/', [FlyController::class, 'show']);
 
 Route::middleware('api')->get('/user', function (Request $request) {
     return $request->user();
