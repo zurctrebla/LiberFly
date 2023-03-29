@@ -4,17 +4,13 @@ use App\Http\Controllers\Api\FlyController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
-// 1º teste de rota.
-Route::get('/', function () {
-    return response()->json(['message' => 'success']);
-});
 
-Route::middleware('api')->get('/flies', [FlyController::class, 'index']);
-Route::middleware('api')->get('/flies/{identify}/', [FlyController::class, 'show']);
-
-Route::middleware('api')->get('/user', function (Request $request) {
+Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::middleware('auth:api')->get('/flies', [FlyController::class, 'index']);
+Route::middleware('auth:api')->get('/flies/{identify}/', [FlyController::class, 'show']);
 
 Route::post('/login', function(Request $request) {
 
